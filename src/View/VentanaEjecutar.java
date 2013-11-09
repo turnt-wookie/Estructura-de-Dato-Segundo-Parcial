@@ -37,13 +37,17 @@ public class VentanaEjecutar extends javax.swing.JFrame {
         switch(this.type){
             case 0:
                 euclidesInit();
-
+                setTitle("Euclides");
                 break;
             case 1:
                 sumatoriaInit();
+                setTitle("Sumatoria");
+
                 break;
             case 2:
                 multiplicacionInit();
+                setTitle("Multiplicacion");
+
                 break;
         }
     }
@@ -161,7 +165,7 @@ public class VentanaEjecutar extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Metal".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

@@ -28,7 +28,9 @@ public class maincontroller {
         int var1 = Integer.valueOf(tokens2[0]);
         int var2 = Integer.valueOf(tokens[1]);
         Euclides euObject = new Euclides(var1,var2);
-        Returner r = new Returner(euObject.algoritmo(),euObject.getText() + "\n" + euObject.imprimirVaciado());
+        int result= euObject.algoritmo();
+        String stackRet = "Llenado\n"+euObject.getText() +"\n\n"  + "Vaciado\n"+euObject.imprimirVaciado();
+        Returner r = new Returner(result,stackRet);
         return r;
     }
 
@@ -51,8 +53,11 @@ public class maincontroller {
         String[] tokens2 = tokens[1].split(";");
 
         int var1 = Integer.valueOf(tokens2[0]);
+        System.out.println(var1);
         Sumatoria sumObject = new Sumatoria(var1);
-        Returner r = new Returner(1,"");
+        int result =  sumObject.sumatoria();
+        String stackRet = "Llenado\n"+sumObject.getText() +"\n\n"  + "Vaciado\n"+sumObject.vaciar();
+        Returner r = new Returner(result ,stackRet);
         return r;
     }
 
@@ -76,7 +81,9 @@ public class maincontroller {
         int var1 = Integer.valueOf(tokens2[0]);
         int var2 = Integer.valueOf(tokens[1]);
         Multiplicacion muObject = new Multiplicacion(var1,var2);
-        Returner r = new Returner(muObject.algoritmo(),muObject.vaciar());
+        int result = muObject.algoritmo();
+        String stackRet = "Llenado\n"+muObject.getText() +"\n\n"  + "Vaciado\n"+muObject.vaciar();
+        Returner r = new Returner(result,stackRet);
         return r;
     }
 

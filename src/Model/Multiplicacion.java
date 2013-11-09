@@ -12,12 +12,12 @@ import java.util.Stack;
  */
 public class Multiplicacion {
 
-    public int a;
-    public int b;
-    public int cont;
-    public String text;
-    public String text2;
-    public Stack pila;
+    private int a;
+    private int b;
+    private int cont;
+    private String text;
+    private String text2;
+    private Stack pila;
     
     
     public Multiplicacion(int a, int b){
@@ -27,56 +27,49 @@ public class Multiplicacion {
         text2 = "";
         cont = 1;
         pila = new Stack();
+
     }
 
     public int algoritmo(){
-        return algoritmo(this.a, this.b);
+        return algoritmo(this.a,this.b);
     }
     
     public int algoritmo(int x, int y){
-        int res;
+        int res=0;
         if(y<=0||x<=0){
             System.out.println("Los números ingresados deben ser naturales.");
             return 0;
-        }
-/*        else{
-            if(y==1){
+        }else{
+            if(cont<=y){
                 pila.push(x);
-                res=x;
-                System.out.println(llenar(x));
-                return res;
+                llenar();
+                cont++;
+                res=algoritmo(x,y);
+                return res=res+x;
             }
-            else if(x==1){
-                pila.push(y);
-                res=y;
-                System.out.println(llenar(y));
-                return res;
-            }
-*/            else{
-                if(cont<=y){
-                    pila.push(x);
-                    System.out.println("Iteración: " +cont+ llenar(x));
-                 res=algoritmo(x,y);
-                 return res;
-                }
-            }
-            return 0;
         }
-    /*}*/
+        return res;
+    }
     
-    public String llenar(int z){
-        text ="\n|-----|\n"+"   "+ z + text;
-        cont++;
+    public String llenar(){
+        
+        Stack clon;
+        clon=(Stack)pila.clone();
+        while(clon.empty()!=true){
+            text =text+"\n|-----|\n"+"   "+ clon.pop();
+            
+        }
+        text = text+"\n\n";
+        
         return text;
     }
     
     public String vaciar(){
         Stack clon;
         int con=0;
-        con++;
         clon=(Stack)pila.clone();
         while(clon.empty()!=true){
-        text2 = text2 + "Iteración: "+con+"\n|-----|\n"+"   "+ clon.pop();
+        text2 = text2 + "\n|-----|\n"+"   "+ clon.pop();
         }
         text2= text2 + "\n\n";
         int x=(Integer)pila.pop();
@@ -117,7 +110,7 @@ public class Multiplicacion {
         return pila;
     }
 
-    public static  String getCodigo(){
+    public static String getCodigo() {
         return "/*\n" +
                 " * To change this template, choose Tools | Templates\n" +
                 " * and open the template in the editor.\n" +
@@ -132,12 +125,12 @@ public class Multiplicacion {
                 " */\n" +
                 "public class Multiplicacion {\n" +
                 "\n" +
-                "    public int a;\n" +
-                "    public int b;\n" +
-                "    public int cont;\n" +
-                "    public String text;\n" +
-                "    public String text2;\n" +
-                "    public Stack pila;\n" +
+                "    private int a;\n" +
+                "    private int b;\n" +
+                "    private int cont;\n" +
+                "    private String text;\n" +
+                "    private String text2;\n" +
+                "    private Stack pila;\n" +
                 "    \n" +
                 "    \n" +
                 "    public Multiplicacion(int a, int b){\n" +
@@ -147,56 +140,49 @@ public class Multiplicacion {
                 "        text2 = \"\";\n" +
                 "        cont = 1;\n" +
                 "        pila = new Stack();\n" +
+                "\n" +
                 "    }\n" +
                 "\n" +
                 "    public int algoritmo(){\n" +
-                "        return algoritmo(this.a, this.b);\n" +
+                "        return algoritmo(this.a,this.b);\n" +
                 "    }\n" +
                 "    \n" +
                 "    public int algoritmo(int x, int y){\n" +
-                "        int res;\n" +
+                "        int res=0;\n" +
                 "        if(y<=0||x<=0){\n" +
                 "            System.out.println(\"Los números ingresados deben ser naturales.\");\n" +
                 "            return 0;\n" +
-                "        }\n" +
-                "/*        else{\n" +
-                "            if(y==1){\n" +
+                "        }else{\n" +
+                "            if(cont<=y){\n" +
                 "                pila.push(x);\n" +
-                "                res=x;\n" +
-                "                System.out.println(llenar(x));\n" +
-                "                return res;\n" +
+                "                llenar();\n" +
+                "                cont++;\n" +
+                "                res=algoritmo(x,y);\n" +
+                "                return res=res+x;\n" +
                 "            }\n" +
-                "            else if(x==1){\n" +
-                "                pila.push(y);\n" +
-                "                res=y;\n" +
-                "                System.out.println(llenar(y));\n" +
-                "                return res;\n" +
-                "            }\n" +
-                "*/            else{\n" +
-                "                if(cont<=y){\n" +
-                "                    pila.push(x);\n" +
-                "                    System.out.println(\"Iteración: \" +cont+ llenar(x));\n" +
-                "                 res=algoritmo(x,y);\n" +
-                "                 return res;\n" +
-                "                }\n" +
-                "            }\n" +
-                "            return 0;\n" +
                 "        }\n" +
-                "    /*}*/\n" +
+                "        return res;\n" +
+                "    }\n" +
                 "    \n" +
-                "    public String llenar(int z){\n" +
-                "        text =\"\\n|-----|\\n\"+\"   \"+ z + text;\n" +
-                "        cont++;\n" +
+                "    public String llenar(){\n" +
+                "        \n" +
+                "        Stack clon;\n" +
+                "        clon=(Stack)pila.clone();\n" +
+                "        while(clon.empty()!=true){\n" +
+                "            text =text+\"\\n|-----|\\n\"+\"   \"+ clon.pop();\n" +
+                "            \n" +
+                "        }\n" +
+                "        text = text+\"\\n\\n\";\n" +
+                "        \n" +
                 "        return text;\n" +
                 "    }\n" +
                 "    \n" +
                 "    public String vaciar(){\n" +
                 "        Stack clon;\n" +
                 "        int con=0;\n" +
-                "        con++;\n" +
                 "        clon=(Stack)pila.clone();\n" +
                 "        while(clon.empty()!=true){\n" +
-                "        text2 = text2 + \"Iteración: \"+con+\"\\n|-----|\\n\"+\"   \"+ clon.pop();\n" +
+                "        text2 = text2 + \"\\n|-----|\\n\"+\"   \"+ clon.pop();\n" +
                 "        }\n" +
                 "        text2= text2 + \"\\n\\n\";\n" +
                 "        int x=(Integer)pila.pop();\n" +
@@ -236,28 +222,42 @@ public class Multiplicacion {
                 "    public Stack getPila() {\n" +
                 "        return pila;\n" +
                 "    }\n" +
-                "    \n" +
-                "    public static  String getCodigo(){\n" +
-                "        return null;\n" +
+                "\n" +
+                "    public static String getCodigo() {\n" +
+                "        return \"\";\n" +
                 "    }\n" +
+                "    \n" +
+                "    \n" +
                 "\n" +
                 "\n" +
                 "    public static void main(String[] args) {\n" +
+                "\n" +
+                "        //editar esto:\n" +
                 "        int pri = 3;\n" +
                 "        int seg = 8;\n" +
+                "        //editar hasta aqui\n" +
+                "        \n" +
                 "        Multiplicacion mult = new Multiplicacion(pri, seg);\n" +
                 "        System.out.println(mult.algoritmo());\n" +
-                "        System.out.println(mult.vaciar());\n" +
+                "        System.out.println(\"Llenado\\n\"+mult.getText());\n" +
+                "        System.out.println(\"Vaciado\\n\"+mult.vaciar());\n" +
                 "    }\n" +
                 "}\n";
     }
+    
+    
 
 
     public static void main(String[] args) {
+
+        //editar esto:
         int pri = 3;
         int seg = 8;
+        //editar hasta aqui
+
         Multiplicacion mult = new Multiplicacion(pri, seg);
         System.out.println(mult.algoritmo());
-        //System.out.println(mult.vaciar());
+        System.out.println("Llenado\n"+mult.getText());
+        System.out.println("Vaciado\n"+mult.vaciar());
     }
 }
