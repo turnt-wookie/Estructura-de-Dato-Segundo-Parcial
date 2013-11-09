@@ -28,7 +28,7 @@ public class maincontroller {
         int var1 = Integer.valueOf(tokens2[0]);
         int var2 = Integer.valueOf(tokens[1]);
         Euclides euObject = new Euclides(var1,var2);
-        Returner r = new Returner(euObject.algoritmo(),euObject.getText()+"\n"+euObject.getText2());
+        Returner r = new Returner(euObject.algoritmo(),euObject.getText() + "\n" + euObject.imprimirVaciado());
         return r;
     }
 
@@ -52,7 +52,7 @@ public class maincontroller {
 
         int var1 = Integer.valueOf(tokens2[0]);
         Sumatoria sumObject = new Sumatoria(var1);
-        Returner r = new Returner(sumObject.sumatoria(),"");
+        Returner r = new Returner(1,"");
         return r;
     }
 
@@ -61,22 +61,27 @@ public class maincontroller {
     }
 
     //Funciones Mario
-    public static void openMario(){
+    public static void openMultiplicacion(){
 
         VentanaEjecutar eu = new VentanaEjecutar(2);
         eu.setVisible(true);
 
     }
 
-    public static Returner createMario(){
-        //Here Goes JFlex code
-        Euclides euObject = new Euclides(1,2);
-        Returner r = new Returner(euObject.algoritmo(),euObject.imprimirVaciado());
+    public static Returner createMultiplicacion(String codeEdit){
+        String[] tokens = codeEdit.split("pri = ");
+        String[] tokens2 = tokens[1].split(";");
+        tokens = tokens2[1].split("seg = ");
+
+        int var1 = Integer.valueOf(tokens2[0]);
+        int var2 = Integer.valueOf(tokens[1]);
+        Multiplicacion muObject = new Multiplicacion(var1,var2);
+        Returner r = new Returner(muObject.algoritmo(),muObject.vaciar());
         return r;
     }
 
-    public static String getCodeMario(){
-        return Euclides.getCodigo();
+    public static String getCodeMultiplicacion(){
+        return Multiplicacion.getCodigo();
     }
 
     public static void main(String[] args) {

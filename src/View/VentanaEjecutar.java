@@ -42,6 +42,9 @@ public class VentanaEjecutar extends javax.swing.JFrame {
             case 1:
                 sumatoriaInit();
                 break;
+            case 2:
+                multiplicacionInit();
+                break;
         }
     }
 
@@ -141,6 +144,9 @@ public class VentanaEjecutar extends javax.swing.JFrame {
             case 1:
                 sumatoriaRun();
                 break;
+            case 2:
+                multiplicacionRun();
+                break;
         }
     }
 
@@ -155,7 +161,7 @@ public class VentanaEjecutar extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -204,7 +210,15 @@ public class VentanaEjecutar extends javax.swing.JFrame {
 
     }
 
-    private void mario(){
+    private void multiplicacionInit(){
+        jTextArea1.setText(maincontroller.getCodeMultiplicacion());
+
+    }
+    private void multiplicacionRun(){
+
+        Returner returner = maincontroller.createMultiplicacion(jTextArea1.getText());
+        jTextArea2.setText(returner.getStackDisplay());
+        jTextField1.setText(String.valueOf(returner.getResult()));
 
     }
 

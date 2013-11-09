@@ -112,8 +112,7 @@ public class inicio extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        JOptionPane.showMessageDialog(null, "Mario no ha hecho su parte.",
-                "Atencion",JOptionPane.WARNING_MESSAGE);
+        maincontroller.openMultiplicacion();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -127,7 +126,7 @@ public class inicio extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

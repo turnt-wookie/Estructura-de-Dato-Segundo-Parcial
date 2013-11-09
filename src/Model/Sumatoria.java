@@ -11,9 +11,11 @@ import java.util.Stack;
  * @author 56185
  */
 public class Sumatoria {
+    private String text;
+    private String text2;
     private int num; //Valor con base a el cual se realizara la sumatoria
     private int i=0; //Varibale que sirve de contador
-    private Stack<Integer> pila = new Stack<Integer>(); //Pila que se rellena con los valores de la sumatoria
+    private Stack pila; //Pila que se rellena con los valores de la sumatoria
 
     /*
      * Constructor de la clase
@@ -21,7 +23,9 @@ public class Sumatoria {
 
     public Sumatoria(int num) {
         this.num=num;
-
+        text = "";
+        text2 = "";
+        pila = new Stack();
     }
 
     /**
@@ -29,17 +33,15 @@ public class Sumatoria {
      * @param n Es la variable que recibe el valor del numero al que se le calculara una sumatoria
      * @return
      */
-
-    public int sumatoria (){
-        return sumatoria(this.num);
-    }
     public int sumatoria(int n) {
+        pila.push(n);
         if (n == 1){
-            rellenar(n);
+            //rellenar(n);
+            System.out.println(rellenar(n));
             return 1;
         }else{
-            rellenar(n);
-            System.out.println("<<<<Llenado>>>>");
+            //rellenar(n);
+            System.out.println(rellenar(n));
             return n + sumatoria(n - 1);
         }
     }
@@ -61,24 +63,34 @@ public class Sumatoria {
     /**
      * Este metodo se encarga de mostrar como se llena una pila con los distintos valores que tendra la variable "n"
      * @param n Es la varible que contiene cada uno de los valores que se usan en la sumatoria
+     * @return
      */
-    public void rellenar(int n){
-        pila.push(n);
-        for (Integer iteracion : pila) {
-            System.out.println("|-----|");
-            System.out.println("   " + iteracion);
-        }
+    public String rellenar(int n){
+
+        text="\n|-----|\n"+"   " + n + text;
+
+        return text;
     }
 
     /**
      *Este metodo solo se encarga de mostar el vaciado de una pila
+     * @return
      */
-    public void vaciar(){
-        for (Integer iteracion : pila) {
-            System.out.println("|-----|");
-            System.out.println("   " + iteracion);
+    public String vaciar(){
+        Stack j;
+        j=(Stack)pila.clone();
+
+        while(j.empty()!=true){
+            text2=text2+"\n|-----|\n"+"   " + j.pop();
         }
-        pila.pop();
+
+        text2 =text2+"\n\n";
+
+        while(pila.empty()!=true){
+            pila.pop();
+            vaciar();
+        }
+        return text2;
     }
 
     /**
@@ -86,114 +98,45 @@ public class Sumatoria {
      * @return
      */
     public static String getCodigo() {
-        return "/*\n" +
-                " * To change this template, choose Tools | Templates\n" +
-                " * and open the template in the editor.\n" +
-                " */\n" +
-                "package Model;\n" +
-                "\n" +
-                "import java.util.Stack;\n" +
-                "\n" +
-                "/**\n" +
-                " *\n" +
-                " * @author 56185\n" +
-                " */\n" +
-                "public class Sumatoria {\n" +
-                "    private int num; //Valor con base a el cual se realizara la sumatoria\n" +
-                "    private int i=0; //Varibale que sirve de contador\n" +
-                "    private Stack<Integer> pila = new Stack<Integer>(); //Pila que se rellena con los valores de la sumatoria\n" +
-                "\n" +
-                "    /*\n" +
-                "     * Constructor de la clase\n" +
-                "     */\n" +
-                "\n" +
-                "    public Sumatoria(int num) {\n" +
-                "        this.num=num;\n" +
-                "\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     * Este metodo realiza el calculo de la sumatoria, mas no es llamado para imprimir, solo se encarga de mandar cada valor de n al metodo \"rellenar\"\n" +
-                "     * @param n Es la variable que recibe el valor del numero al que se le calculara una sumatoria\n" +
-                "     * @return\n" +
-                "     */\n" +
-                "\n" +
-                "    public int sumatoria (){\n" +
-                "        return sumatoria(this.num);\n" +
-                "    }\n" +
-                "    public int sumatoria(int n) {\n" +
-                "        if (n == 1){\n" +
-                "            rellenar(n);\n" +
-                "            return 1;\n" +
-                "        }else{\n" +
-                "            rellenar(n);\n" +
-                "            System.out.println(\"<<<<Llenado>>>>\");\n" +
-                "            return n + sumatoria(n - 1);\n" +
-                "        }\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     * Este metodo solo se encarga de realizar el calculo de la sumatoria e imprimirlo\n" +
-                "     * @param n Es la variable que recibe el valor del numero al que se le calculara una sumatoria\n" +
-                "     * @return\n" +
-                "     */\n" +
-                "\n" +
-                "    public int sumatoria1(int n) {\n" +
-                "        if (n == 1){\n" +
-                "            return 1;\n" +
-                "        }else{\n" +
-                "            return n + sumatoria1(n - 1);\n" +
-                "        }\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     * Este metodo se encarga de mostrar como se llena una pila con los distintos valores que tendra la variable \"n\"\n" +
-                "     * @param n Es la varible que contiene cada uno de los valores que se usan en la sumatoria\n" +
-                "     */\n" +
-                "    public void rellenar(int n){\n" +
-                "        pila.push(n);\n" +
-                "        for (Integer iteracion : pila) {\n" +
-                "            System.out.println(\"|-----|\");\n" +
-                "            System.out.println(\"   \" + iteracion);\n" +
-                "        }\n" +
-                "    }\n" +
-                "\n" +
-                "    /**\n" +
-                "     *Este metodo solo se encarga de mostar el vaciado de una pila\n" +
-                "     */\n" +
-                "    public void vaciar(){\n" +
-                "        for (Integer iteracion : pila) {\n" +
-                "            System.out.println(\"|-----|\");\n" +
-                "            System.out.println(\"   \" + iteracion);\n" +
-                "        }\n" +
-                "        pila.pop();\n" +
-                "    }\n" +
-                "\n" +
-                "\n" +
-                "    /**\n" +
-                "     * @param args the command line arguments\n" +
-                "     */\n" +
-                "\n" +
-                "    public static void main(String[] args) {\n" +
-                "        int num=6;\n" +
-                "        Sumatoria sum = new Sumatoria(num);\n" +
-                "        sum.sumatoria();\n" +
-                "\n" +
-                "        System.out.println(\"Suma desde 1 hasta \" + num + \" = \" + sum.sumatoria1(num));\n" +
-                "    }\n" +
-                "\n" +
-                "}\n";
+        return null;
     }
+
+    /**
+     * Metodo que devuelve el texto que representa el llenado de la pila
+     * @return
+     */
+    public String getText() {
+        return text;
+    }
+
+    /**
+     * Metodo que devuelve el texto que representa el vaciado de la pila
+     * @return
+     */
+    public String getText2() {
+        return text2;
+    }
+
+    /**
+     * Metodo que devuelve la pila que se esta utilizando
+     * @return
+     */
+    public Stack getPila() {
+        return pila;
+    }
+
 
     /**
      * @param args the command line arguments
      */
 
     public static void main(String[] args) {
-        int num=6;
+        int num=5;
         Sumatoria sum = new Sumatoria(num);
-        sum.sumatoria();
-
+        System.out.println("<<<<Llenado>>>>");
+        sum.sumatoria(num);
+        System.out.println("<<<<Vaciado>>>>");
+        System.out.println(sum.vaciar());
         System.out.println("Suma desde 1 hasta " + num + " = " + sum.sumatoria1(num));
     }
 
