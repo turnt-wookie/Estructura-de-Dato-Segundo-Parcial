@@ -30,6 +30,11 @@ public class VentanaEjecutar extends javax.swing.JFrame {
 
 
     }
+
+    /**
+     * Abre la ventana deacuerdo a parametro enviado por el controllador en la ventana de inicio.
+     *
+     */
     public VentanaEjecutar(int type) {
         this.type = type;
         initComponents();
@@ -188,12 +193,19 @@ public class VentanaEjecutar extends javax.swing.JFrame {
             }
         });
     }
-
+    /**
+     * Inicializa la ventana con el codigo de Euclides
+     *
+     */
     private void euclidesInit(){
 
        jTextArea1.setText(maincontroller.getCodeEuclides());
 
     }
+    /**
+     * Ejecuta el algoritmo desde el controllador y parsea la respuesta con el Returner (Euclides)
+     *
+     */
     private void euclidesRun(){
 
         Returner returner =maincontroller.createEuclides(jTextArea1.getText());
@@ -202,10 +214,20 @@ public class VentanaEjecutar extends javax.swing.JFrame {
         jTextField1.setText(String.valueOf(returner.getResult()));
 
     }
+
+    /**
+     * Inicializa la ventana con el codigo de Sumatoria
+     *
+     */
     private void sumatoriaInit(){
         jTextArea1.setText(maincontroller.getCodeSumatoria());
 
     }
+
+    /**
+     * Ejecuta el algoritmo desde el controllador y parsea la respuesta con el Returner (Sumatoria)
+     *
+     */
     private void sumatoriaRun(){
         Returner returner =maincontroller.createSumatoria(jTextArea1.getText());
 
@@ -214,10 +236,19 @@ public class VentanaEjecutar extends javax.swing.JFrame {
 
     }
 
+    /**
+     * Inicializa la ventana con el codigo de Multiplicacion
+     *
+     */
     private void multiplicacionInit(){
         jTextArea1.setText(maincontroller.getCodeMultiplicacion());
 
     }
+
+    /**
+     * Ejecuta el algoritmo desde el controllador y parsea la respuesta con el Returner (Multiplicacion)
+     *
+     */
     private void multiplicacionRun(){
 
         Returner returner = maincontroller.createMultiplicacion(jTextArea1.getText());

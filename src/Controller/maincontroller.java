@@ -13,12 +13,27 @@ import View.inicio;
 public class maincontroller {
 
     //Funciones Euclides
+
+    /**
+     * Inicia la ventana de Euclides
+     *
+     */
     public static void openEuclides(){
 
         VentanaEjecutar eu = new VentanaEjecutar(0);
         eu.setVisible(true);
 
     }
+    /**
+     *
+     * Esta funcion parse al codigo enviado a traves de codeEdited(String) para la funcion de Euclides
+     * Se ejecuta el algoritmo de multiplicacion y se devuelve en un objeto de tipo Returner
+     *
+     * @param codeEdited
+     *
+     * @return Returner
+     *
+     */
 
     public static Returner createEuclides(String codeEdited){
         String[] tokens = codeEdited.split("int x = ");
@@ -35,18 +50,35 @@ public class maincontroller {
     }
 
 
-
+    /**
+     * @return String Codigo de Euclides
+     *
+     */
     public static String getCodeEuclides(){
         return Euclides.getCodigo();
     }
 
-    //Funciones Sumatoria
+    /**
+     * Inicia la ventana de Sumatoria
+     *
+     */
     public static void openSumatoria(){
 
         VentanaEjecutar eu = new VentanaEjecutar(1);
         eu.setVisible(true);
 
     }
+    /**
+     *
+     * Esta funcion parse al codigo enviado a traves de codeEdit(String) para la funcion de sumatoria
+     * Se ejecuta el algoritmo de multiplicacion y se devuelve en un objeto de tipo Returner
+     *
+     * @param codeEdit
+     *
+     * @return Returner
+     *
+     */
+
 
     public static Returner createSumatoria(String codeEdit){
         String[] tokens = codeEdit.split("int num=");
@@ -61,17 +93,36 @@ public class maincontroller {
         return r;
     }
 
+
+    /**
+     * @return String Codigo de Sumatoria
+     *
+     */
     public static String getCodeSumatoria(){
         return Sumatoria.getCodigo();
     }
 
-    //Funciones Mario
+    /**
+     * Inicia la ventana de Multiplicacion
+     *
+     */
     public static void openMultiplicacion(){
 
         VentanaEjecutar eu = new VentanaEjecutar(2);
         eu.setVisible(true);
 
     }
+
+    /**
+     *
+     * Esta funcion parse al codigo enviado a traves de codeEdit(String) para la funcion de multiplicacion
+     * Se ejecuta el algoritmo de multiplicacion y se devuelve en un objeto de tipo Returner
+     *
+     * @param codeEdit
+     *
+     * @return Returner
+     *
+     */
 
     public static Returner createMultiplicacion(String codeEdit){
         String[] tokens = codeEdit.split("pri = ");
@@ -87,10 +138,20 @@ public class maincontroller {
         return r;
     }
 
+
+    /**
+     * @return String Codigo de Multiplicacion
+     *
+     */
     public static String getCodeMultiplicacion(){
         return Multiplicacion.getCodigo();
     }
 
+
+    /**
+     * Generador del programa
+     *
+     */
     public static void main(String[] args) {
 
         inicio ini = new inicio();

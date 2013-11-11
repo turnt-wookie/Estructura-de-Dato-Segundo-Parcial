@@ -7,7 +7,7 @@ package Model;
 import java.util.Stack;
 
 /**
- *
+ * Clase que multiplica dos números usando recursividad, toma el multiplicando y lo genera las veces definidas por el multiplicador.
  * @author Mario Vallarta
  */
 public class Multiplicacion {
@@ -18,8 +18,12 @@ public class Multiplicacion {
     private String text;
     private String text2;
     private Stack pila;
-    
-    
+
+    /**
+     * Constructor de la clase.
+     * @param a Es el multiplicando que se usa en el constructor.
+     * @param b Es el multiplicador que se usa en el constructor.
+     */
     public Multiplicacion(int a, int b){
         this.a=a;
         this.b=b;
@@ -29,11 +33,19 @@ public class Multiplicacion {
         pila = new Stack();
 
     }
-
+    /**
+     * Es el algoritmo que sigue para que la operación se repita cuantas veces lo pida el multiplicador y va llenando la pila.
+     * @return Regresa error si el multiplicando o el multiplicador son menores a 1.
+     */
     public int algoritmo(){
         return algoritmo(this.a,this.b);
     }
-    
+    /**
+     * Es el algoritmo que sigue para que la operación se repita cuantas veces lo pida el multiplicador y va llenando la pila.
+     * @param x Multiplicando que se usa en la función algoritmo.
+     * @param y Multiplicador que se usa en la función algoritmo.
+     * @return Regresa error si el multiplicando o el multiplicador son menores a 1.
+     */
     public int algoritmo(int x, int y){
         int res=0;
         if(y<=0||x<=0){
@@ -50,7 +62,12 @@ public class Multiplicacion {
         }
         return res;
     }
-    
+
+
+    /**
+     * Imprime el llenado de la pila.
+     * @return Regresa el texto que se enseña al llenarse la pila.
+     */
     public String llenar(){
         
         Stack clon;
@@ -63,7 +80,12 @@ public class Multiplicacion {
         
         return text;
     }
-    
+
+
+    /**
+     * Imprime el vaciado de la pila y la va vaciando, al mismo tiempo que suma el multiplicando las veces que el multiplicador defina, también es recursiva.
+     * @return Regresa el texto que se enseña al vaciarse la pila.
+     */
     public String vaciar(){
         Stack clon;
         int con=0;
@@ -82,34 +104,63 @@ public class Multiplicacion {
         return text2;
     }
 
+    /**
+     *
+     * @return int a
+     */
     public int getA() {
         return a;
     }
 
 
+    /**
+     *
+     * @return int b
+     */
     public int getB() {
         return b;
     }
 
+    /**
+     *
+     * @return int cont
+     */
     public int getCont() {
         return cont;
     }
 
 
+    /**
+     *
+     * @return string text
+     */
     public String getText() {
         return text;
     }
 
 
+    /**
+     *
+     * @return   string text2
+     */
     public String getText2() {
         return text2;
     }
 
 
+    /**
+     *
+     * @return stack pila
+     */
     public Stack getPila() {
         return pila;
     }
 
+
+    /**
+     *     Funcion que devuelve el codigo
+     * @return String Code
+     */
     public static String getCodigo() {
         return "/*\n" +
                 " * To change this template, choose Tools | Templates\n" +
